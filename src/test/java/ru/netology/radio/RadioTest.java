@@ -5,438 +5,248 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RadioTest {
+    Radio rad = new Radio();
 
     @Test
-    void findProperRadioStation() {
-        Radio rad = new Radio();
+    public void findNormalRadioStation() {
 
         rad.setCurrentRadioStation(5);
-
-        int actual = rad.getCurrentRadioStation();
-        int expected = 5;
-
-        assertEquals(expected, actual);
+        assertEquals(5, rad.getCurrentRadioStation());
     }
 
     @Test
-    void findMinimumBorderRadioStation() {
-        Radio rad = new Radio();
+    public void findMinimumBorderRadioStation() {
 
         rad.setCurrentRadioStation(0);
-
-        int actual = rad.getCurrentRadioStation();
-        int expected = 0;
-
-        assertEquals(expected, actual);
+        assertEquals(0, rad.getCurrentRadioStation());
     }
 
     @Test
-    void findLessMinimumBorderRadioStation() {
-        Radio rad = new Radio();
+    public void findLessMinimumBorderRadioStation() {
 
         rad.setCurrentRadioStation(-1);
-
-        int actual = rad.getCurrentRadioStation();
-        int expected = 0;
-
-        assertEquals(expected, actual);
+        assertEquals(0, rad.getCurrentRadioStation());
     }
 
     @Test
-    void findMoreMinimumBorderRadioStation() {
-        Radio rad = new Radio();
+    public void findMoreMinimumBorderRadioStation() {
 
         rad.setCurrentRadioStation(1);
-
-        int actual = rad.getCurrentRadioStation();
-        int expected = 1;
-
-        assertEquals(expected, actual);
+        assertEquals(1, rad.getCurrentRadioStation());
     }
 
     @Test
-    void findMoreMaximumBorderRadioStation() {
-        Radio rad = new Radio();
+    public void findMaximumBorderRadioStation() {
 
-        rad.setCurrentRadioStation(10);
-
-        int actual = rad.getCurrentRadioStation();
-        int expected = 0;
-
-        assertEquals(expected, actual);
+        rad.setCurrentRadioStation(9);
+        assertEquals(9, rad.getCurrentRadioStation());
     }
 
     @Test
     void findLessMaximumBorderRadioStation() {
-        Radio rad = new Radio();
 
         rad.setCurrentRadioStation(8);
-
-        int actual = rad.getCurrentRadioStation();
-        int expected = 8;
-
-        assertEquals(expected, actual);
+        assertEquals(8, rad.getCurrentRadioStation());
     }
 
     @Test
-    void findMaximumBorderRadioStation() {
-        Radio rad = new Radio();
+    void findMoreMaximumBorderRadioStation() {
 
-        rad.setCurrentRadioStation(9);
-
-        int actual = rad.getCurrentRadioStation();
-        int expected = 9;
-
-        assertEquals(expected, actual);
+        rad.setCurrentRadioStation(10);
+        assertEquals(0, rad.getCurrentRadioStation());
     }
 
     @Test
     void findNextRadioStation() {
-        Radio rad = new Radio();
 
         rad.setCurrentRadioStation(4);
-        rad.next();
-
-        int actual = rad.getCurrentRadioStation();
-        int expected = 5;
-
-        assertEquals(expected, actual);
+        rad.setNextRadioStation();
+        assertEquals(5, rad.getCurrentRadioStation());
     }
 
     @Test
     void findMinimumBorderNextRadioStation() {
-        Radio rad = new Radio();
 
         rad.setCurrentRadioStation(0);
-        rad.next();
-
-        int actual = rad.getCurrentRadioStation();
-        int expected = 1;
-
-        assertEquals(expected, actual);
+        rad.setNextRadioStation();
+        assertEquals(1, rad.getCurrentRadioStation());
     }
-
 
     @Test
     void findMoreMinimumBorderNextRadioStation() {
-        Radio rad = new Radio();
 
         rad.setCurrentRadioStation(1);
-        rad.next();
-
-        int actual = rad.getCurrentRadioStation();
-        int expected = 2;
-
-        assertEquals(expected, actual);
+        rad.setNextRadioStation();
+        assertEquals(2, rad.getCurrentRadioStation());
     }
 
     @Test
     void findMaximumBorderNextRadioStation() {
-        Radio rad = new Radio();
 
         rad.setCurrentRadioStation(9);
-        rad.next();
-
-        int actual = rad.getCurrentRadioStation();
-        int expected = 0;
-
-        assertEquals(expected, actual);
+        rad.setNextRadioStation();
+        assertEquals(0, rad.getCurrentRadioStation());
     }
 
     @Test
     void findLessMaximumBorderNextRadioStation() {
-        Radio rad = new Radio();
 
-        rad.setCurrentRadioStation(8);
-        rad.next();
-
-        int actual = rad.getCurrentRadioStation();
-        int expected = 9;
-
-        assertEquals(expected, actual);
+        rad.setCurrentRadioStation(9);
+        rad.setNextRadioStation();
+        assertEquals(0, rad.getCurrentRadioStation());
     }
 
     @Test
     void findPrevRadioStation() {
-        Radio rad = new Radio();
 
-        rad.setCurrentRadioStation(4);
-        rad.prev();
-
-        int actual = rad.getCurrentRadioStation();
-        int expected = 3;
-
-        assertEquals(expected, actual);
+        rad.setCurrentRadioStation(5);
+        rad.setPrevRadioStation();
+        assertEquals(4, rad.getCurrentRadioStation());
     }
 
     @Test
     void findMinimumBorderPrevRadioStation() {
-        Radio rad = new Radio();
 
         rad.setCurrentRadioStation(0);
-        rad.prev();
-
-        int actual = rad.getCurrentRadioStation();
-        int expected = 9;
-
-        assertEquals(expected, actual);
+        rad.setPrevRadioStation();
+        assertEquals(9, rad.getCurrentRadioStation());
     }
 
     @Test
     void findMoreMinimumBorderPrevRadioStation() {
-        Radio rad = new Radio();
 
         rad.setCurrentRadioStation(1);
-        rad.prev();
-
-        int actual = rad.getCurrentRadioStation();
-        int expected = 0;
-
-        assertEquals(expected, actual);
+        rad.setPrevRadioStation();
+        assertEquals(0, rad.getCurrentRadioStation());
     }
 
     @Test
     void findMaximumBorderPrevRadioStation() {
-        Radio rad = new Radio();
 
         rad.setCurrentRadioStation(9);
-        rad.prev();
-
-        int actual = rad.getCurrentRadioStation();
-        int expected = 8;
-
-        assertEquals(expected, actual);
+        rad.setPrevRadioStation();
+        assertEquals(8, rad.getCurrentRadioStation());
     }
 
     @Test
     void findLessMaximumBorderPrevRadioStation() {
-        Radio rad = new Radio();
 
         rad.setCurrentRadioStation(8);
-        rad.prev();
-
-        int actual = rad.getCurrentRadioStation();
-        int expected = 7;
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    void findCustomStation() {
-        Radio rad = new Radio();
-
-        rad.setCurrentRadioStation(5);
-        rad.customStation();
-
-        int actual = rad.getCurrentRadioStation();
-        int expected = 5;
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    void findMinimumBorderCustomStation() {
-        Radio rad = new Radio();
-
-        rad.setCurrentRadioStation(0);
-        rad.customStation();
-
-        int actual = rad.getCurrentRadioStation();
-        int expected = 0;
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    void findMaxMinBorderCustomStation() {
-        Radio rad = new Radio();
-
-        rad.setCurrentRadioStation(1);
-        rad.customStation();
-
-        int actual = rad.getCurrentRadioStation();
-        int expected = 1;
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    void findMaximumBorderCustomStation() {
-        Radio rad = new Radio();
-
-        rad.setCurrentRadioStation(9);
-        rad.customStation();
-
-        int actual = rad.getCurrentRadioStation();
-        int expected = 9;
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    void findMinMaxBorderCustomStation() {
-        Radio rad = new Radio();
-
-        rad.setCurrentRadioStation(8);
-        rad.customStation();
-
-        int actual = rad.getCurrentRadioStation();
-        int expected = 8;
-
-        assertEquals(expected, actual);
+        rad.setPrevRadioStation();
+        assertEquals(7, rad.getCurrentRadioStation());
     }
 
     @Test
     void findNormalSoundVolume() {
-        Radio rad = new Radio();
 
-        rad.setSoundVolume(5);
-
-        int actual = rad.getCurrentSoundVolume();
-        int expected = 5;
-
-        assertEquals(expected, actual);
+        rad.setCurrentSoundVolume(50);
+        assertEquals(50, rad.getCurrentSoundVolume());
     }
 
     @Test
-    void findMinBorderSoundVolume() {
-        Radio rad = new Radio();
+    void findMinimumBorderSoundVolume() {
 
-        rad.setSoundVolume(0);
-
-        int actual = rad.getCurrentSoundVolume();
-        int expected = 0;
-
-        assertEquals(expected, actual);
+        rad.setCurrentSoundVolume(0);
+        assertEquals(0, rad.getCurrentSoundVolume());
     }
 
     @Test
     void findMoreMinimumBorderSoundVolume() {
-        Radio rad = new Radio();
 
-        rad.setSoundVolume(1);
-
-        int actual = rad.getCurrentSoundVolume();
-        int expected = 1;
-
-        assertEquals(expected, actual);
+        rad.setCurrentSoundVolume(1);
+        assertEquals(1, rad.getCurrentSoundVolume());
     }
 
     @Test
     void findLessMinimumBorderSoundVolume() {
-        Radio rad = new Radio();
 
-        rad.setSoundVolume(-1);
-
-        int actual = rad.getCurrentSoundVolume();
-        int expected = 0;
-
-        assertEquals(expected, actual);
+        rad.setCurrentSoundVolume(-1);
+        assertEquals(0, rad.getCurrentSoundVolume());
     }
 
     @Test
     void findMaximumBorderSoundVolume() {
-        Radio rad = new Radio();
 
-        rad.setSoundVolume(100);
-
-        int actual = rad.getCurrentSoundVolume();
-        int expected = 100;
-
-        assertEquals(expected, actual);
+        rad.setCurrentSoundVolume(100);
+        assertEquals(100, rad.getCurrentSoundVolume());
     }
 
     @Test
     void findLessMaximumBorderSoundVolume() {
-        Radio rad = new Radio();
 
-        rad.setSoundVolume(99);
-
-        int actual = rad.getCurrentSoundVolume();
-        int expected = 99;
-
-        assertEquals(expected, actual);
+        rad.setCurrentSoundVolume(99);
+        assertEquals(99, rad.getCurrentSoundVolume());
     }
 
     @Test
     void findMoreMaximumBorderSoundVolume() {
-        Radio rad = new Radio();
 
-        rad.setSoundVolume(101);
-
-        int actual = rad.getCurrentSoundVolume();
-        int expected = 0;
-
-        assertEquals(expected, actual);
+        rad.setCurrentSoundVolume(101);
+        assertEquals(0, rad.getCurrentSoundVolume());
     }
 
     @Test
     void findNormalIncreaseSoundVolume() {
-        Radio rad = new Radio();
 
-        rad.setSoundVolume(5);
-        rad.increaseSoundVolume();
-
-
-        int actual = rad.getCurrentSoundVolume();
-        int expected = 6;
-
-        assertEquals(expected, actual);
+        rad.setCurrentSoundVolume(50);
+        rad.setIncreaseSoundVolume();
+        assertEquals(51, rad.getCurrentSoundVolume());
     }
 
     @Test
     void findMaxIncreaseSoundVolume() {
-        Radio rad = new Radio();
 
-        rad.setSoundVolume(100);
-        rad.increaseSoundVolume();
-
-
-        int actual = rad.getCurrentSoundVolume();
-        int expected = 100;
-
-        assertEquals(expected, actual);
+        rad.setCurrentSoundVolume(100);
+        rad.setIncreaseSoundVolume();
+        assertEquals(100, rad.getCurrentSoundVolume());
     }
 
     @Test
     void findLessMaxIncreaseSoundVolume() {
-        Radio rad = new Radio();
 
-        rad.setSoundVolume(99);
-        rad.increaseSoundVolume();
+        rad.setCurrentSoundVolume(99);
+        rad.setIncreaseSoundVolume();
+        assertEquals(100, rad.getCurrentSoundVolume());
+    }
 
+    @Test
+    void findNormalDecreaseSoundVolume() {
 
-        int actual = rad.getCurrentSoundVolume();
-        int expected = 100;
-
-        assertEquals(expected, actual);
+        rad.setCurrentSoundVolume(50);
+        rad.setDecreaseSoundVolume();
+        assertEquals(49, rad.getCurrentSoundVolume());
     }
 
     @Test
     void findMinDecreaseSoundVolume() {
-        Radio rad = new Radio();
 
-        rad.setSoundVolume(0);
-        rad.decreaseSoundVolume();
-
-
-        int actual = rad.getCurrentSoundVolume();
-        int expected = 0;
-
-        assertEquals(expected, actual);
+        rad.setCurrentSoundVolume(0);
+        rad.setDecreaseSoundVolume();
+        assertEquals(0, rad.getCurrentSoundVolume());
     }
 
     @Test
     void findMoreMinDecreaseSoundVolume() {
-        Radio rad = new Radio();
 
-        rad.setSoundVolume(1);
-        rad.decreaseSoundVolume();
-
-
-        int actual = rad.getCurrentSoundVolume();
-        int expected = 0;
-
-        assertEquals(expected, actual);
+        rad.setCurrentSoundVolume(1);
+        rad.setDecreaseSoundVolume();
+        assertEquals(0, rad.getCurrentSoundVolume());
     }
+
+    @Test
+    void findMaxDecreaseSoundVolume() {
+
+        rad.setCurrentSoundVolume(100);
+        rad.setDecreaseSoundVolume();
+        assertEquals(99, rad.getCurrentSoundVolume());
+    }
+
+    @Test
+    void findLessMaxDecreaseSoundVolume() {
+
+        rad.setCurrentSoundVolume(99);
+        rad.setDecreaseSoundVolume();
+        assertEquals(98, rad.getCurrentSoundVolume());
+    }
+
 }
